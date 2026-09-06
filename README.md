@@ -159,7 +159,3 @@ The master dataset of 600 job listings scraped equally from LinkedIn, Indeed, an
 ## 👤 Author
 
 **Yajush Mishra** — [@mishrayajush](https://github.com/mishrayajush)
-
----
-
-> ⭐ If you found this project helpful, consider giving it a star on GitHub!
