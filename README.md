@@ -1,4 +1,4 @@
-# 🧞 JobGenie — AI-Powered Resume Parser & Job Matcher
+# 🧞 PlacemenIQ — AI-Powered Resume Parser & Job Matcher
 
 A smart **Flask** web app that parses your PDF resume, detects your career domain, computes an ATS score, and matches you with the most relevant jobs from LinkedIn, Indeed, and Naukri — all in seconds.
 
