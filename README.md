@@ -10,8 +10,6 @@ Job hunting is exhausting — scrolling through hundreds of irrelevant listings,
 
 It also scores your resume against ATS (Applicant Tracking System) criteria so you know exactly what to fix before applying.
 
-🔗 **GitHub Repository:** [tanishcode-12/jobgenie](https://github.com/tanishcode-12/jobgenie)
-
 ---
 
 ## ✨ Features
@@ -46,54 +44,6 @@ It also scores your resume against ATS (Applicant Tracking System) criteria so y
 ├── 🛑 Procfile                  # Gunicorn config for Heroku/Render deployment
 └── 🚫 .gitignore
 ```
-
----
-
-## ⚙️ Installation
-
-### 🧰 Prerequisites
-
-- 🐍 Python 3.8 or higher
-- 📦 pip
-
-### 🪜 Steps
-
-**📥 Clone the repository**
-
-```bash
-git clone https://github.com/tanishcode-12/jobgenie.git
-cd jobgenie/jobgenie
-```
-
-**📦 Install dependencies**
-
-```bash
-pip install flask pdfplumber pandas gunicorn
-```
-
-**▶️ Run the app locally**
-
-```bash
-python app.py
-```
-
-**🌐 Open in browser**
-
-Navigate to `http://localhost:5000`
-
-> ⚠️ Make sure `jobs.csv` is in the same directory as `app.py` before launching.
-
-### ☁️ Deploy to Heroku / Render
-
-The repo includes a `Procfile` so deployment is plug-and-play.
-
-> ⚠️ Make sure `jobs.csv` is accessible at the path expected by `app.py` in your deployment environment.
-
-```
-web: gunicorn jobgenie.app:app
-```
-
-Push to Heroku or connect the repo to Render and it will auto-detect the Procfile.
 
 ---
 
@@ -208,7 +158,7 @@ The master dataset of 600 job listings scraped equally from LinkedIn, Indeed, an
 
 ## 👤 Author
 
-**Tanish** — [@tanishcode-12](https://github.com/tanishcode-12)
+**Yajush Mishra** — [@mishrayajush](https://github.com/mishrayajush)
 
 ---
 
