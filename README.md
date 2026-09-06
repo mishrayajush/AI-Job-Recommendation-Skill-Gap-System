@@ -29,35 +29,19 @@ It also scores your resume against ATS (Applicant Tracking System) criteria so y
 
 ## 🗂️ Project Structure
 
-```
-📦 jobgenie/
-├── 🚀 app.py                    # Flask app — resume parsing, job matching, ATS scoring, chatbot API
-├── 📋 jobs.csv                  # Master dataset of 600 job listings
-├── 🎨 static/
-│   ├── 🖌️  style.css            # Full UI styling — dark mode, cards, filters, modals
-│   ├── 💬  chatbot.js           # Chatbot toggle, message send/receive, typing indicator
-│   ├── 🖼️  logo.png             # JobGenie logo
-│   └── 🖼️  secondimage.jpg      # Hero section illustration
-├── 🌐 templates/
-│   ├── 🏠  index.html           # Homepage — hero, drag & drop upload, stats bar
-│   └── 📊  results.html         # Results page — ATS modal, job cards, sidebar filters
-├── 🛑 Procfile                  # Gunicorn config for Heroku/Render deployment
-└── 🚫 .gitignore
-```
-
 ---
 
 ## 🚀 Usage
 
 1. 📄 **Upload your PDF resume** — Drag and drop (or click to browse) on the homepage. PDF only, max 2MB.
-2. 🧞 **Click "Summon Genie"** — JobGenie parses your resume and detects your domain in seconds.
+2. 🧞 **Click "Summon Genie"** — PlacementIQ parses your resume and detects your domain in seconds.
 3. 📊 **Review your ATS Score** — Click **"View Detailed Analysis"** on the results banner to see your full score breakdown, detected skills, education, experience, and improvement tips.
 4. 💼 **Browse matched jobs** — All 600+ listings are sorted by match score, filtered to your detected domain.
 5. 🔧 **Use sidebar filters** — Narrow results by job source, required skills, experience level, or city.
 6. 🚀 **Apply directly** — Hit **"Apply Now"** on any card to open the original job listing on LinkedIn, Indeed, or Naukri.
 7. 🧞 **Chat with JobGenie** — Click the floating genie button for help with ATS scores, match logic, or resume tips.
 
-> 📁 **Tip:** If fewer than 10 domain-matched jobs are found, JobGenie automatically falls back to showing all top matches across every domain.
+> 📁 **Tip:** If fewer than 10 domain-matched jobs are found, PlacementIQ automatically falls back to showing all top matches across every domain.
 
 ---
 
