@@ -6,7 +6,7 @@ A smart **Flask** web app that parses your PDF resume, detects your career domai
 
 ## 📌 Overview
 
-Job hunting is exhausting — scrolling through hundreds of irrelevant listings, not knowing why your resume keeps getting rejected. JobGenie solves this by parsing your PDF resume, automatically detecting your professional domain (Data Science, Software Dev, Finance, etc.), and surfacing only the jobs that match your background.
+Job hunting is exhausting — scrolling through hundreds of irrelevant listings, not knowing why your resume keeps getting rejected. PlacemenIQ solves this by parsing your PDF resume, automatically detecting your professional domain (Data Science, Software Dev, Finance, etc.), and surfacing only the jobs that match your background.
 
 It also scores your resume against ATS (Applicant Tracking System) criteria so you know exactly what to fix before applying.
 
