@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobGenie — Resume Parser & Job Matcher</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="header-logo">
+            <img src="/static/logo.png" alt="JobGenie" class="logo-img">
+        </div>
+        <div class="header-center">
+            <span class="header-brand"><span class="brand-job">Job</span><span class="brand-genie">Genie</span></span>
+        </div>
+        <nav class="header-nav">
+            <span class="nav-tag">🔒 Resume not stored</span>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<main class="hero-section">
+    <div class="hero-content">
+        <div class="hero-left">
+            <div class="badge-pill">✨ AI-Powered Job Matching</div>
+
+            <h1 class="hero-title">
+                Still Unemployed?<br>
+                <span class="title-accent">Same.</span>
+            </h1>
+
+            <p class="hero-sub">
+                Your resume has seen more rejections than your crush.<br>
+                Let's fix that — upload it and get matched in seconds.
+            </p>
+
+            {% if error %}
+                <p class="error-msg">⚠️ {{ error }}</p>
+            {% endif %}
+
+            <form method="POST" enctype="multipart/form-data" id="uploadForm">
+                <label class="dropzone" id="dropzone">
+                    <input type="file" id="resumeInput" name="resume" accept=".pdf" required>
+                    <div class="drop-inner">
+                        <div class="drop-icon">📄</div>
+                        <p class="drop-title" id="dropText">Drop your resume here</p>
+                        <p class="drop-hint">PDF only · Max 2MB · Click or drag & drop</p>
+                    </div>
+                </label>
+
+                <button type="submit" class="cta-btn" id="submitBtn">
+                    <span class="btn-text">🧞‍♂️ Summon Genie</span>
+                    <span class="btn-loader hidden" id="btnLoader">Analysing...</span>
+                </button>
+            </form>
+
+            <ul class="feature-list">
+                <li><span class="feat-icon">⚡</span> Instant skill extraction from PDF</li>
+                <li><span class="feat-icon">🎯</span> Match score for every job</li>
+                <li><span class="feat-icon">🔍</span> 600+ live job listings</li>
+            </ul>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-img-wrap">
+                <img src="/static/secondimage.jpg" alt="JobGenie Illustration" class="hero-img">
+                <div class="img-glow"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stat-item"><strong>600+</strong> Job Listings</div>
+    <div class="stat-divider">·</div>
+    <div class="stat-item"><strong>50+</strong> Skills Detected</div>
+    <div class="stat-divider">·</div>
+    <div class="stat-item"><strong>3</strong> Job Platforms</div>
+    <div class="stat-divider">·</div>
+    <div class="stat-item"><strong>100%</strong> Free</div>
+</div>
+
+<!-- CHATBOT TOGGLE -->
+<div class="chatbot-toggle" onclick="toggleChatbot()" title="Chat with JobGenie">🧞‍♂️</div>
+
+<!-- CHATBOT BOX -->
+<div class="chatbot hidden" id="chatbotBox">
+    <div class="chat-header">
+        <div class="chat-header-left">
+            <span class="chat-avatar">🧞‍♂️</span>
+            <div>
+                <div class="chat-name">JobGenie</div>
+                <div class="chat-status">● Online</div>
+            </div>
+        </div>
+        <span class="close-btn" onclick="toggleChatbot()">✕</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <div class="bot-msg">Hey! 👋 I'm JobGenie. Ask me anything about jobs, resume tips, or how matching works!</div>
+    </div>
+    <div class="chat-suggestions" id="chatSuggestions">
+        <button class="suggestion-chip" onclick="sendSuggestion('How does matching work?')">How does matching work?</button>
+        <button class="suggestion-chip" onclick="sendSuggestion('Resume tips?')">Resume tips?</button>
+    </div>
+    <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter') sendMessage()">
+        <button class="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <p>© 2026 <strong>JobGenie</strong> — Resume Parser & Job Recommendation System</p>
+</footer>
+
+<script src="/static/chatbot.js"></script>
+<script>
+// ---- THEME TOGGLE ----
+function toggleTheme() {
+    const isDark = document.body.classList.toggle("dark-mode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    document.querySelector(".theme-icon").textContent = isDark ? "☀️" : "🌙";
+}
+// Apply saved theme on load
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    document.querySelector(".theme-icon").textContent = "☀️";
+}
+
+// ---- DRAG & DROP ----
+const dropzone = document.getElementById("dropzone");
+const resumeInput = document.getElementById("resumeInput");
+const dropText = document.getElementById("dropText");
+
+["dragenter","dragover","dragleave","drop"].forEach(ev => {
+    dropzone.addEventListener(ev, e => e.preventDefault());
+});
+dropzone.addEventListener("dragover", () => dropzone.classList.add("drag-over"));
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("drag-over"));
+dropzone.addEventListener("drop", e => {
+    dropzone.classList.remove("drag-over");
+    const file = e.dataTransfer.files[0];
+    if (!file || !file.name.toLowerCase().endsWith(".pdf")) {
+        dropText.textContent = "❌ PDF files only please!";
+        return;
+    }
+    resumeInput.files = e.dataTransfer.files;
+    dropText.textContent = "✅ " + file.name;
+    dropzone.classList.add("file-selected");
+});
+resumeInput.addEventListener("change", () => {
+    if (resumeInput.files.length > 0) {
+        dropText.textContent = "✅ " + resumeInput.files[0].name;
+        dropzone.classList.add("file-selected");
+    }
+});
+
+// ---- LOADING STATE ----
+document.getElementById("uploadForm").addEventListener("submit", () => {
+    document.querySelector(".btn-text").classList.add("hidden");
+    document.getElementById("btnLoader").classList.remove("hidden");
+    document.getElementById("submitBtn").disabled = true;
+});
+</script>
+
+</body>
+</html>
